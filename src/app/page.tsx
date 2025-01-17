@@ -9,3 +9,16 @@ export default Home;
 // needs a folder called app and within it a page.tsx or page.js file with exported component
 // layout.tsx gets created automatically
 // Next automatically handles a non-existing route with its own 404 page
+
+// Nested Routes
+// Next allows us to nest folders within the App folder - that is how we can create pages on address like localhost:3000/blog/first
+// by creating nested folder structure of the project, files will be automatically routed within the url
+// though it works in a small project, it is not always feasible to create routes with predefined folders, especially with larger projects -> dynamic routes
+
+// Dynamic Routes
+// if we have a 1000 products, creating a folder for each of them is not a viable option
+// we can create a folder with the square brackets - like [productId] → dynamic segment allowing us to create dynamic routes
+// normally in a working web page, probably an API would be called to fill in the page and fetch the needed data, we fed it a prop "params" with productId
+
+// Nested Dynamic Routes
+// for example when we need to route review 1 for a product 1 - eg. on address: xxx/products/1/reviews/1
