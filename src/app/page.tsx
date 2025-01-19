@@ -29,3 +29,9 @@ export default Home;
 // examples - http://localhost:3000/docs/routing/catch-all-routing - displays in our case: "Viewing docs for feature routing and concept catch-all-routing"
 // ideally - use the slug array to fetch the corresponding documentation for the feature ID and concept ID
 // Next provides an optional catch-all route as well - if we wrap the slug folder in another pair of square brackets, it's gonna create routing for the xxx/docs url as well
+
+// Not Found Page
+// be default - Next renders a default not found 404 page - but we often want to customize this page - to do this, create a file within the app folder not-found.tsx and export default a new NotFound component
+// the page is tied to the file based routing mechanism of the app router
+// what is we want to programatically render this page on a certain condition? - we can use the notFound function from Next.js - import notFound function from next/navigation - and if(condition is met) use this function → which will render the not-found.tsx component we prepered in the app folder
+// we can also create a not-found.tsx page for different components in their respected folders
