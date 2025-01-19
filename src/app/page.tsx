@@ -22,3 +22,10 @@ export default Home;
 
 // Nested Dynamic Routes
 // for example when we need to route review 1 for a product 1 - eg. on address: xxx/products/1/reviews/1
+
+// Catch-all Segments
+// we can create a folder [...slug] - slug being a universally used for urls → page.tsx within the folder eg. comp Docs - it will match any URL that contains "docs" segment in a path - for example localhost:3000/docs/feature1
+// captures all URL segments and maps them to single file in our project - particularly useful for documentation - when we want different segments and SEO for optimalization, but the layout of the document stays the same
+// examples - http://localhost:3000/docs/routing/catch-all-routing - displays in our case: "Viewing docs for feature routing and concept catch-all-routing"
+// ideally - use the slug array to fetch the corresponding documentation for the feature ID and concept ID
+// Next provides an optional catch-all route as well - if we wrap the slug folder in another pair of square brackets, it's gonna create routing for the xxx/docs url as well
