@@ -75,3 +75,28 @@ export default Home;
 // Route Group Layout ()
 // route groups - good for not only to organize our project in a manner that doesn't affect the URL, but also to selectively apply a layout to a certain segments while leaving others unchanged
 // we basically add the layout.tsx (the component with the inner layout) to the route group folder → it affects only the parts of the app that are within this folder
+
+// Routing Metadata
+// ensuring proper search engin optimization (SEO) - CRUTIAL for increasing visibility and attracting users
+// Next.js introduced the Metadata API - allows us to define metadata for each page
+// → the metadata ensures accurate and relevant information is displayed when our page is shared or indexed
+// two ways to configure metadata in page.tsx or layout.tsx → either export a static metadata object or export a dynamic generateMetadata function - though it is not possible to export both
+
+// Metadata rules
+// both layout.tsx and page.tsx can export metadata - in layout it applies to all pages in that layout, it definet in a page, it applies only to that page
+// metadata are read in order - from the root level down to the final page level
+// when there's metadata in multiple places for the same route, they get combined - but page metadata will replace layout metadata if they have the same properties
+// → that is how static metadata export works in next.js
+
+// Dynamic metadata
+// depends on dynamic information such as the current route parameters, external data or metadata in parent segments
+// to define dynamic metadata - we define and export a dynamic generateMetadata function which returns a metadata object from a layout or a page.tsx
+// common use case - for example in the productId - when having an e-commerce website, we want to have
+// generateMetadatra function can be also defined as an async function and within the function body, await a fetch request
+
+// Title metadata
+// it's primary purpose - define the document title
+// can be string or an object
+// the title object can have a default property - used as a fallback title for child route segments which don't explicitly specify a title - aka if a child doesn't have explicitly defined title, this one will be used
+// or it can have a template property - to create a dinamic titles by adding a prefix or a suffix - it applies only to a child route segments and not the segmen in which it is defined - we specify it as "%s | Codevolution" - the %s gets replaced by the title metadata specified in the child component
+// or it can have an absolute property - if we want to have a title that completely ignores title.template set in the parent segments
