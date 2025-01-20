@@ -57,3 +57,21 @@ export default Home;
 // BUT - that create a new path - so we have to update the url so that it contains the auth/login part as well
 // it is acceptable like the for authorization - but it would inacceptable for analytics or marketing → we can mark a foulder as a route group to exclude it fromn the url paths
 // → simply wrap the folder's name in parenthesis ()
+
+// Layouts
+// a page = UI that is unique to a route
+// a layout = UI that is shared between multiple pages in the app - achieving a header - content - footer layout is now way easier
+// how - default exporting a React component from layout.js or layout.tsx file
+// every layout component should accept a children prop that will be populated with a child page during rendering
+// Next provides a default layout out of the box - we don't have to create it from scratch if we don't need to
+// similarly to page.tsx, layout.tsx have their own naming convention
+// the root layout - located in the src/app - layout.tsx - a mandatory layout for every next.js application - gets automatically generated even if we delete it
+// it basically substitutes the main html file for rendering React apps + we don't have to create separate layout component
+
+// Nested Layouts
+// layouts can of course be nested - it works in a way that the root layout gets rendered and then the layout for the component → the resulting page as a footer and a header and inside it, there is a layout for eg. products
+// this allows us to create layouts that apply only to a specific areas of our application
+
+// Route Group Layout ()
+// route groups - good for not only to organize our project in a manner that doesn't affect the URL, but also to selectively apply a layout to a certain segments while leaving others unchanged
+// we basically add the layout.tsx (the component with the inner layout) to the route group folder → it affects only the parts of the app that are within this folder
