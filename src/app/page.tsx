@@ -1,5 +1,13 @@
+import Link from 'next/link';
+
 const Home = () => {
-  return <h1>Welcome home!</h1>;
+  return (
+    <>
+      <h1>Welcome home!</h1>
+      <Link href="/blog">Blog</Link>
+      <Link href="/products">Products</Link>
+    </>
+  );
 };
 
 export default Home;
@@ -100,3 +108,23 @@ export default Home;
 // the title object can have a default property - used as a fallback title for child route segments which don't explicitly specify a title - aka if a child doesn't have explicitly defined title, this one will be used
 // or it can have a template property - to create a dinamic titles by adding a prefix or a suffix - it applies only to a child route segments and not the segmen in which it is defined - we specify it as "%s | Codevolution" - the %s gets replaced by the title metadata specified in the child component
 // or it can have an absolute property - if we want to have a title that completely ignores title.template set in the parent segments
+
+// Navigation
+// users typically rely on UI elements like links to navigate - by clicking on them, or through programmatic navigation after completing an action
+// → nextr provides the Link component - <Link> is a React component that extends the html <a> element, and it's the primary way to navigate between routes in Next.js
+// to use it, we need to import it from "next/link" - it works the same way as in React and due to the TS types, the href props is mandatory
+// dynamic routes - we can hard code them, but it not always ideal - especially when working with big chunks of data - in such case, we can pass the productId as a props to the Link component and use string interpolation
+// replace prop of the Link component - replaces the current history state intead of adding a new URL - when we click back, it takes us back to the homepage instead of back to the projects
+
+// Active links - styling
+// to determine if a link is active - Next js provides the usePathname hook
+// to determine if a link is active - Next js provides the usePathname hook - this hook is only working in client components - so we have to add "use client"; to the top of the component
+// we can create a navLinks array, map it, and add conditionally css classes
+
+// Programmatical navigation
+// for example placing an order redirect the user to the order confirmation
+// for this, we use the useRouter hook - also works only with client components - so "use client"; at the top of the page
+// router.push("/") - can take the user back to whichever specified href url in the "" - even nested or catch all routes
+// router.replace() - similar use as using it in the Link component, to clear the history
+// router.back() - to take the user back
+// router.forward() - to navigate the user one page forward
