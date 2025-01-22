@@ -128,3 +128,32 @@ export default Home;
 // router.replace() - similar use as using it in the Link component, to clear the history
 // router.back() - to take the user back
 // router.forward() - to navigate the user one page forward
+
+// Templates
+// are very similar to layouts - they wrap each child layout or page
+// however - when user navigates between routes that share a template, a new instance of the component is mounted, DOM elements are recreated, state is not perserved, and effects are re-synchronized
+// can be defined by exporting a default react component from a template.js or template.tsx file
+// similar to layouts, templates should also acxept a children prop which will render the nested segments in the route
+// in most cases, the layouts will be enough - but there are cases when we need to rerender the component after navigating to a different child - for example, when we use enter / exit animations for pages or when running a side effect using the useEffect hook when the route changes - in such cases, we can use templates as a replacement to layouts files
+// side note - it is possible to include both, template.tsx and layout.tsx files - in such scenario, the layout gets rendered first and the children is replaced by the component exported from the template file
+// templates are not a common requirement and we should primarily rely on layouts for UI - but is important to know about this
+// in our case, we simply renamed the layout.tsx to template.tsx - other than that, they have the same rules and the same structure
+
+// Special files:
+// so far, we know - page.tsx, layout.tsx, template.tsx and not-found.tsx
+
+// loading.tsx - allows us to create loading states that are displayed to users while a specific route segment's content is loading
+// the loading state appears immediately upon navigation, giving users the assurance that the application is responsive and actively loading content
+// benefits:
+// 1. you can display the loading state as soon as user navigates to a new route - the immediate feedback reassures users that their action has been acknowledged, reduces perceived loading times, and makes the application feel more responsive
+// 2. Next allows the creation of shared layouts that remain interaktive while new route segments are loading - users can continue interacting with certain parts of the app, such as navigation menu or sidebar, even when the main content is still being fetched
+
+// error.tsx - without it, we get some error in the dev mode, but when trying to run it in production mode, one error in a deeply nested component results in crush of the whole application
+// better approach - handle the error gracefully affecting only the concerned segment while keeping the rest of the application functional
+// add error.tsx simply to the folder and export default the component + it needs to be a client component again
+// ideally the error page would have a UI matching the application theme
+// error.tsx does:
+// automatically wrap a route segment and its nested children in a React Error Boundary
+// create error UI tailored to specific segments using the file-system hierarchy to adjust granularity
+// isolate errors to affected segments while keeping the rest of the application functional
+// add functionality to attempt to revover from error withou a ful page reload
