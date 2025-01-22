@@ -31,3 +31,10 @@ export default ErrorBoundary;
 // errors bubble up to the closest parent error boundary - meaning when the error gets loaded, it will change the content up to the nearest parent error boundary
 // an error.tsx file will cater to errors for all its nested child segments
 // by positioning error.tsx files at different levels in the nested folders of a route, we can achieve a more granular level of error handling → the placement of the error.tsx file plays a crucial role in determining the scope of error handling allowing for more precise control over which parts of the UI are affected when error occurs
+
+// Handling errors within layouts
+// error.tsx will handle errors for all its nested child elements
+// the error boundary does not catch errors thrown here because it's nested inside the layouts component
+// if we add the error handler to the layout in the parent folder, there is no error boundary to catch it → our app is now in a broken state
+// important to remember ! - the error boundary will not handle errors thrown in a layout.tsx component within the same segment
+// to navigate around this, we need to place the error.tsx in the layout's parent segment
