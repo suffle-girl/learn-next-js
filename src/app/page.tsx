@@ -175,3 +175,28 @@ export default Home;
 // if we add the error handler to the layout in the parent folder, there is no error boundary to catch it → our app is now in a broken state
 // important to remember ! - the error boundary will not handle errors thrown in a layout.tsx component within the same segment
 // to navigate around this, we need to place the error.tsx in the layout's parent segment
+
+// Advanced routing concepts in Next.js:
+
+// Parallel routes - slots @folder
+// an advanced routing mechanism that allows for the simultaneous rendering of multiple pages with the same layout
+// for example building a dashboard - need to display several analytics at once - user analytics, revenue metrics, notifications
+// traditionally, we would build a separate component for each of these metrics and add them to the layout.tsx within an app/dashboard folder - while that is one of the options, using parallel routing can achieve the same outcome with additional benefits
+// parallel routes are defined using a feature known as slots
+// slots help to structure our content ina modular fashion
+// to define a slot, we use the "@folder" naming convention
+// each slot is then passed as a prop to its corresponding layout.tsx file
+// in our code, we have created the slots as folders with their page.tsx files, imported a simple Card component which we created in the src/components folder, and added them similarly to children into the layout.tsx file - as prop of type React.ReactNode and then added the props as children to respective divs
+// !! the slots are available as props and we don't have to import them
+// slots are not route segments and do not affect the URL structure
+// technically the children in such component is also a slot - so technically, we have four slots in our example
+// benefits:
+// their ability to split a single layout into various slots, making the code more manageable - that's especially useful when there are more teams working on various sections of the page - but that is true with the traditional component composition as well
+// the true benefit lays in the slots' capacity for independent route handling and sub-navigation
+// independent route handling - each slot of our layout, such as user analytics or revenue metrics, can have its own loading and error states
+// this granular control is particularly beneficial in scenarios where different sections of the page load at varying speeds or encounter unique errors - eg. if there is an error in use analytics, we can only display it in the card of the user analytics, the same with loading data etc. → it improves user experience, but also simplifies debugging and maintanance
+// sub-navigation in routes - each slot of our dashboard can essentially function as a mini-application, complete with its own navigation and state management
+// this is especially useful in a complex application such as our dashboard where different sections serve distinct purposes
+// → each of the mini-app works as a standalone entity - user can interact with them differently, navigate through pages separately and so on (like widgets on the Jira dashboard)
+
+// Subnavigation in routes
