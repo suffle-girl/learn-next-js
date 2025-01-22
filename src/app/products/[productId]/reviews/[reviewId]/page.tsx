@@ -1,22 +1,23 @@
+'use client';
 import { notFound } from 'next/navigation';
+import { use } from 'react';
 
 const getRandomInt = (count: number) => {
   return Math.floor(Math.random() * count);
 };
-// this code generates a random error in the runtime
 
-const ReviewId = async ({
+const ReviewId = ({
   params,
 }: {
   params: Promise<{ reviewId: string; productId: string }>;
 }) => {
-  const { reviewId, productId } = await params;
-  const random = getRandomInt(2);
+  const { reviewId, productId } = use(params);
+  // const random = getRandomInt(2);
 
-  if (random === 1) {
-    throw new Error('Error loading review');
-    // this code generates a random error in the runtime
-  }
+  // if (random === 1) {
+  //   throw new Error('Error loading review');
+  //   // this code generates a random error in the runtime
+  // }
 
   if (parseInt(reviewId) > 1000) {
     notFound();
