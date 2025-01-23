@@ -1,7 +1,7 @@
 import Card from '@/components/card';
 
-const RevenueMetricts = () => {
+const DefaultRevenueMetricts = () => {
   return <Card>Revenue Metricts</Card>;
 };
 
-export default RevenueMetricts;
+export default DefaultRevenueMetricts;

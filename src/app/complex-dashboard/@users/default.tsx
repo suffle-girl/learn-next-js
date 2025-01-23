@@ -1,7 +1,7 @@
 import Card from '@/components/card';
 
-const UserAnalytics = () => {
+const DefaultUserAnalytics = () => {
   return <Card>User Analytics</Card>;
 };
 
-export default UserAnalytics;
+export default DefaultUserAnalytics;
