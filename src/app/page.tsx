@@ -199,7 +199,7 @@ export default Home;
 // this is especially useful in a complex application such as our dashboard where different sections serve distinct purposes
 // → each of the mini-app works as a standalone entity - user can interact with them differently, navigate through pages separately and so on (like widgets on the Jira dashboard)
 
-// Subnavigation in routes - Unmatched routes
+// Unmatched routes - subnavigation in routes
 // a crutial feature of parallel routing which handles unmatched routes
 // by default the content rendered within a slot matches the current url - we have 4 slots in our folder including the children - and when we navigate to complex-dashboard/notifications/archived, only the content of notifications card will change → user analytics and revenue components become unmatched
 // 2 ways of how the navigation occures - and it behaves differently based in it:
@@ -214,3 +214,16 @@ export default Home;
 // Conditional routes
 // for example, based on the authentication process, we can either reload a working dashboard or a login page for those who didn't authenticate
 // this enables fully separated code on the same url
+
+// Intercepting routes
+// these allow us to intercept or stop the default routing behaviour to present an alternate view or component when navigating through the UI while still preserving the intended route for scenarios like page reloads
+// this can be useful if we want to show a route while keeping the context of the current page
+// for example - it allows us to display a login modal instead of a whole new login page when clicking on the login button, still on the address/login url, but after a reload the whole new page with login is opened; similar to when sharing posts from IG or FB - thanks to this, the link remains shareable
+// conventions:
+// use (.) in front of the folder name to match segments on the same level - in our example, we have one folder f2 for reload and (.)f2 for clicking - they need to match and be on the same level
+// use (..) in front of the folder name to match segments one level above
+// use (..)(..) in front of the folder name to match segments two levels above - as of the time of the recording, this feature didn't work properly
+// use (...) to match segments on the root directory - from any level without thinking too much about it, the three dots can be used to access the root level
+
+// Parallel intercepting routes
+// see the photo-feed example
