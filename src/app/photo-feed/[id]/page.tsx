@@ -1,12 +1,19 @@
-import Image from "next/image";
-import wondersImages, { WonderImage } from "../wonders";
+import Image from 'next/image';
+import wondersImages, { WonderImage } from '../wonders';
 
-export default function PhotoPage({
-  params: { id },
+export default async function PhotoPage({
+  params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const photo: WonderImage = wondersImages.find((p) => p.id === id)!;
+  const { id } = await params; // Unwrapping `params` because it's now a promise
+
+  const photo: WonderImage | undefined = wondersImages.find((p) => p.id === id);
+
+  if (!photo) {
+    return <div>Photo not found.</div>;
+  }
+
   return (
     <div className="container mx-auto my-10">
       <div className="w-1/2 mx-auto">
@@ -16,9 +23,8 @@ export default function PhotoPage({
         <Image
           alt={photo.name}
           src={photo.src}
-          className="w-full object-cover aspect-square "
+          className="w-full object-cover aspect-square"
         />
-
         <div className="bg-white py-4">
           <h3>{photo.photographer}</h3>
           <h3>{photo.location}</h3>
